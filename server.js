@@ -7,12 +7,11 @@ const app = express();
 const port = 3000;
 
 // السماح بالوصول إلى ملفات الـ HTML والـ CSS
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // صفحة الـ HTML الرئيسية
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // التعامل مع طلب تحويل النص إلى PDF
@@ -22,9 +21,9 @@ app.post('/convert', (req, res) => {
   // إنشاء مستند PDF جديد
   const doc = new PDFDocument();
   const fileName = 'output.pdf';
-  const filePath = path.join(__dirname, 'public', fileName);
+  const filePath = path.join(__dirname, fileName);
 
-  // كتابة ملف الـ PDF في مجلد "public"
+  // كتابة ملف الـ PDF في نفس المسار
   const writeStream = fs.createWriteStream(filePath);
   doc.pipe(writeStream);
 
