@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">تحويل النصوص إلى PDF</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="language-settings">
+            <label id="language-label">اختر اللغة:</label>
+            <select id="language-select" onchange="changeLanguage()">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        
+        <label class="input-label" id="upload-label">رفع ملف النص:</label>
+        <div class="file-upload">
+            <label class="custom-file-upload" for="fileInput">
+                <span id="file-upload-text">اختر ملف</span>
+                <i class="fa fa-upload"></i>
+            </label>
+            <input type="file" id="fileInput" accept=".txt" onchange="updateFileName()">
+        </div>
+        
+        <span id="fileName">لا يوجد ملف مختار</span>
+
+        <label class="input-label" id="text-input-label">أدخل النص هنا:</label>
+        <textarea id="textInput" placeholder="أدخل النص هنا..."></textarea>
+        
+        <button id="convert-button" onclick="convertToPDF()">تحويل إلى PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
