@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
-    <link rel="stylesheet" href="/css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/3.5.0/css/flag-icons.min.css">
     <style>
         /* إضافة بعض الأنماط الخاصة بالأيقونات والقوائم المنسدلة */
         .currency-icon {
             width: 20px;
             height: 20px;
             margin-left: 5px;
-        }
-
-        .flag-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
         }
 
         select {
@@ -47,98 +40,62 @@
         <div class="form-group">
             <label for="from-currency">From Currency:</label>
             <select id="from-currency">
-                <option value="USD"> <span class="fi fi-us"></span> USD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="EUR"> <span class="fi fi-eu"></span> EUR <i class="fas fa-euro-sign currency-icon"></i></option>
-                <option value="JPY"> <span class="fi fi-jp"></span> JPY <i class="fas fa-yen-sign currency-icon"></i></option>
-                <option value="GBP"> <span class="fi fi-gb"></span> GBP <i class="fas fa-pound-sign currency-icon"></i></option>
-                <option value="AUD"> <span class="fi fi-au"></span> AUD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="CAD"> <span class="fi fi-ca"></span> CAD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="CHF"> <span class="fi fi-ch"></span> CHF <i class="fas fa-franc-sign currency-icon"></i></option>
-                <option value="CNY"> <span class="fi fi-cn"></span> CNY <i class="fas fa-yen-sign currency-icon"></i></option>
-                <option value="SEK"> <span class="fi fi-se"></span> SEK <i class="fas fa-krona currency-icon"></i></option>
-                <option value="NZD"> <span class="fi fi-nz"></span> NZD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="MXN"> <span class="fi fi-mx"></span> MXN <i class="fas fa-peso-sign currency-icon"></i></option>
-                <option value="SGD"> <span class="fi fi-sg"></span> SGD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="HKD"> <span class="fi fi-hk"></span> HKD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="NOK"> <span class="fi fi-no"></span> NOK <i class="fas fa-krona currency-icon"></i></option>
-                <option value="KRW"> <span class="fi fi-kr"></span> KRW <i class="fas fa-won-sign currency-icon"></i></option>
-                <option value="TRY"> <span class="fi fi-tr"></span> TRY <i class="fas fa-lira-sign currency-icon"></i></option>
-                <option value="RUB"> <span class="fi fi-ru"></span> RUB <i class="fas fa-ruble-sign currency-icon"></i></option>
-                <option value="INR"> <span class="fi fi-in"></span> INR <i class="fas fa-rupee-sign currency-icon"></i></option>
-                <option value="BRL"> <span class="fi fi-br"></span> BRL <i class="fas fa-real-sign currency-icon"></i></option>
-                <option value="ZAR"> <span class="fi fi-za"></span> ZAR <i class="fas fa-rand-sign currency-icon"></i></option>
-
-                <!-- العملات العربية -->
-                <option value="AED"> <span class="fi fi-ae"></span> AED <i class="fas fa-dirham currency-icon"></i></option>
-                <option value="SAR"> <span class="fi fi-sa"></span> SAR <i class="fas fa-riyal currency-icon"></i></option>
-                <option value="EGP"> <span class="fi fi-eg"></span> EGP <i class="fas fa-pound-sign currency-icon"></i></option>
-                <option value="DZD"> <span class="fi fi-dz"></span> DZD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="MAD"> <span class="fi fi-ma"></span> MAD <i class="fas fa-dirham currency-icon"></i></option>
-                <option value="IQD"> <span class="fi fi-iq"></span> IQD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="JOD"> <span class="fi fi-jo"></span> JOD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="KWD"> <span class="fi fi-kw"></span> KWD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="BHD"> <span class="fi fi-bh"></span> BHD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="LYD"> <span class="fi fi-ly"></span> LYD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="OMR"> <span class="fi fi-om"></span> OMR <i class="fas fa-rial currency-icon"></i></option>
+                <option value="USD">USD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="EUR">EUR <i class="fas fa-euro-sign currency-icon"></i></option>
+                <option value="JPY">JPY <i class="fas fa-yen-sign currency-icon"></i></option>
+                <option value="GBP">GBP <i class="fas fa-pound-sign currency-icon"></i></option>
+                <option value="AUD">AUD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="CAD">CAD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="CHF">CHF <i class="fas fa-franc-sign currency-icon"></i></option>
+                <option value="CNY">CNY <i class="fas fa-yen-sign currency-icon"></i></option>
+                <option value="SEK">SEK <i class="fas fa-krona currency-icon"></i></option>
+                <option value="NZD">NZD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="MXN">MXN <i class="fas fa-peso-sign currency-icon"></i></option>
+                <option value="SGD">SGD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="HKD">HKD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="NOK">NOK <i class="fas fa-krona currency-icon"></i></option>
+                <option value="KRW">KRW <i class="fas fa-won-sign currency-icon"></i></option>
+                <option value="TRY">TRY <i class="fas fa-lira-sign currency-icon"></i></option>
+                <option value="RUB">RUB <i class="fas fa-ruble-sign currency-icon"></i></option>
+                <option value="INR">INR <i class="fas fa-rupee-sign currency-icon"></i></option>
+                <option value="BRL">BRL <i class="fas fa-real-sign currency-icon"></i></option>
+                <option value="ZAR">ZAR <i class="fas fa-rand-sign currency-icon"></i></option>
+                <!-- أضف المزيد من العملات حسب الحاجة -->
             </select>
         </div>
 
         <div class="form-group">
             <label for="to-currency">To Currency:</label>
             <select id="to-currency">
-                <option value="USD"> <span class="fi fi-us"></span> USD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="EUR"> <span class="fi fi-eu"></span> EUR <i class="fas fa-euro-sign currency-icon"></i></option>
-                <option value="JPY"> <span class="fi fi-jp"></span> JPY <i class="fas fa-yen-sign currency-icon"></i></option>
-                <option value="GBP"> <span class="fi fi-gb"></span> GBP <i class="fas fa-pound-sign currency-icon"></i></option>
-                <option value="AUD"> <span class="fi fi-au"></span> AUD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="CAD"> <span class="fi fi-ca"></span> CAD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="CHF"> <span class="fi fi-ch"></span> CHF <i class="fas fa-franc-sign currency-icon"></i></option>
-                <option value="CNY"> <span class="fi fi-cn"></span> CNY <i class="fas fa-yen-sign currency-icon"></i></option>
-                <option value="SEK"> <span class="fi fi-se"></span> SEK <i class="fas fa-krona currency-icon"></i></option>
-                <option value="NZD"> <span class="fi fi-nz"></span> NZD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="MXN"> <span class="fi fi-mx"></span> MXN <i class="fas fa-peso-sign currency-icon"></i></option>
-                <option value="SGD"> <span class="fi fi-sg"></span> SGD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="HKD"> <span class="fi fi-hk"></span> HKD <i class="fas fa-dollar-sign currency-icon"></i></option>
-                <option value="NOK"> <span class="fi fi-no"></span> NOK <i class="fas fa-krona currency-icon"></i><option value="KRW"> <span class="fi fi-kr"></span> KRW <i class="fas fa-won-sign currency-icon"></i></option>
-                <option value="TRY"> <span class="fi fi-tr"></span> TRY <i class="fas fa-lira-sign currency-icon"></i></option>
-                <option value="RUB"> <span class="fi fi-ru"></span> RUB <i class="fas fa-ruble-sign currency-icon"></i></option>
-                <option value="INR"> <span class="fi fi-in"></span> INR <i class="fas fa-rupee-sign currency-icon"></i></option>
-                <option value="BRL"> <span class="fi fi-br"></span> BRL <i class="fas fa-real-sign currency-icon"></i></option>
-                <option value="ZAR"> <span class="fi fi-za"></span> ZAR <i class="fas fa-rand-sign currency-icon"></i></option>
-
-                <!-- العملات العربية -->
-                <option value="AED"> <span class="fi fi-ae"></span> AED <i class="fas fa-dirham currency-icon"></i></option>
-                <option value="SAR"> <span class="fi fi-sa"></span> SAR <i class="fas fa-riyal currency-icon"></i></option>
-                <option value="EGP"> <span class="fi fi-eg"></span> EGP <i class="fas fa-pound-sign currency-icon"></i></option>
-                <option value="DZD"> <span class="fi fi-dz"></span> DZD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="MAD"> <span class="fi fi-ma"></span> MAD <i class="fas fa-dirham currency-icon"></i></option>
-                <option value="IQD"> <span class="fi fi-iq"></span> IQD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="JOD"> <span class="fi fi-jo"></span> JOD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="KWD"> <span class="fi fi-kw"></span> KWD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="BHD"> <span class="fi fi-bh"></span> BHD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="LYD"> <span class="fi fi-ly"></span> LYD <i class="fas fa-dinar currency-icon"></i></option>
-                <option value="OMR"> <span class="fi fi-om"></span> OMR <i class="fas fa-rial currency-icon"></i></option>
+                <option value="USD">USD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="EUR">EUR <i class="fas fa-euro-sign currency-icon"></i></option>
+                <option value="JPY">JPY <i class="fas fa-yen-sign currency-icon"></i></option>
+                <option value="GBP">GBP <i class="fas fa-pound-sign currency-icon"></i></option>
+                <option value="AUD">AUD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="CAD">CAD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="CHF">CHF <i class="fas fa-franc-sign currency-icon"></i></option>
+                <option value="CNY">CNY <i class="fas fa-yen-sign currency-icon"></i></option>
+                <option value="SEK">SEK <i class="fas fa-krona currency-icon"></i></option>
+                <option value="NZD">NZD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="MXN">MXN <i class="fas fa-peso-sign currency-icon"></i></option>
+                <option value="SGD">SGD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="HKD">HKD <i class="fas fa-dollar-sign currency-icon"></i></option>
+                <option value="NOK">NOK <i class="fas fa-krona currency-icon"></i></option>
+                <option value="KRW">KRW <i class="fas fa-won-sign currency-icon"></i></option>
+                <option value="TRY">TRY <i class="fas fa-lira-sign currency-icon"></i></option>
+                <option value="RUB">RUB <i class="fas fa-ruble-sign currency-icon"></i></option>
+                <option value="INR">INR <i class="fas fa-rupee-sign currency-icon"></i></option>
+                <option value="BRL">BRL <i class="fas fa-real-sign currency-icon"></i></option>
+                <option value="ZAR">ZAR <i class="fas fa-rand-sign currency-icon"></i></option>
+                <!-- أضف المزيد من العملات حسب الحاجة -->
             </select>
         </div>
 
         <button id="convert-btn">Convert</button>
 
-        <div class="result">
-            <h3>Converted Amount:</h3>
-            <p id="converted-amount"></p>
-        </div>
+        <div id="result"></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // يمكنك إضافة منطق تحويل العملات هنا
-        $('#convert-btn').click(function() {
-            const amount = $('#amount').val();
-            const fromCurrency = $('#from-currency').val();
-            const toCurrency = $('#to-currency').val();
-            const convertedAmount = amount * 1.2; // هنا يمكن إدخال معدل التحويل المناسب
-            $('#converted-amount').text(`${convertedAmount} ${toCurrency}`);
-        });
-    </script>
+    <script src="script.css"></script>
 </body>
 </html>
