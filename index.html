@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title">تحويل النصوص إلى PDF</title>
-    <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/css">
 </head>
 <body>
     <div class="container">
-        <div class="language-settings">
-            <label id="language-label">اختر اللغة:</label>
-            <select id="language-select" onchange="changeLanguage()">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-        
-        <label class="input-label" id="upload-label">رفع ملف النص:</label>
-        <div class="file-upload">
-            <label class="custom-file-upload" for="fileInput">
-                <span id="file-upload-text">اختر ملف</span>
-                <i class="fa fa-upload"></i>
-            </label>
-            <input type="file" id="fileInput" accept=".txt" onchange="updateFileName()">
-        </div>
-        
-        <span id="fileName">لا يوجد ملف مختار</span>
+        <h2>Currency Converter</h2>
 
-        <label class="input-label" id="text-input-label">أدخل النص هنا:</label>
-        <textarea id="textInput" placeholder="أدخل النص هنا..."></textarea>
-        
-        <button id="convert-button" onclick="convertToPDF()">تحويل إلى PDF</button>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+        </div>
+
+        <div class="form-group">
+            <label for="from-currency">From Currency:</label>
+            <input type="text" id="from-currency" placeholder="e.g., USD">
+        </div>
+
+        <div class="form-group">
+            <label for="to-currency">To Currency:</label>
+            <input type="text" id="to-currency" placeholder="e.g., EUR">
+        </div>
+
+        <button id="convert-btn">Convert</button>
+
+        <div id="result"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/js"></script>
 </body>
 </html>
