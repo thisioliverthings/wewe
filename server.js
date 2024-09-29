@@ -1,47 +1,56 @@
-const http = require('http');
+const express = require('express');
+const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
 
-// نوع الملفات (MIME types) بناءً على الامتداد
-const mimeTypes = {
-    '.html': 'text/html',
-    '.css': 'text/css',
-    '.js': 'application/javascript',
-};
+const app = express();
+const port = 3000;
 
-// إنشاء السيرفر
-const server = http.createServer((req, res) => {
-    // تحديد مسار الملف المطلوب
-    let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+// السماح بالوصول إلى ملفات الـ HTML والـ CSS
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-    // الحصول على امتداد الملف
-    const extname = path.extname(filePath);
-
-    // تحديد نوع المحتوى بناءً على الامتداد
-    const contentType = mimeTypes[extname] || 'application/octet-stream';
-
-    // قراءة الملف وإرساله إلى العميل
-    fs.readFile(filePath, (err, content) => {
-        if (err) {
-            if (err.code === 'ENOENT') {
-                // إذا لم يتم العثور على الملف
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('404: Page not found');
-            } else {
-                // في حالة حدوث خطأ آخر
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end(`Server Error: ${err.code}`);
-            }
-        } else {
-            // إرسال الملف إذا وجد
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
+// صفحة الـ HTML الرئيسية
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-// تشغيل السيرفر على المنفذ 3000
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// التعامل مع طلب تحويل النص إلى PDF
+app.post('/convert', (req, res) => {
+  const inputText = req.body.textInput || 'لا يوجد نص مدخل';
+
+  // إنشاء مستند PDF جديد
+  const doc = new PDFDocument();
+  const fileName = 'output.pdf';
+  const filePath = path.join(__dirname, 'public', fileName);
+
+  // كتابة ملف الـ PDF في مجلد "public"
+  const writeStream = fs.createWriteStream(filePath);
+  doc.pipe(writeStream);
+
+  // إضافة النص إلى ملف الـ PDF
+  doc.fontSize(12).text(inputText, 100, 100);
+  doc.end();
+
+  writeStream.on('finish', function () {
+    // إرسال رابط تحميل PDF للمستخدم
+    res.download(filePath, fileName, (err) => {
+      if (err) {
+        console.log("خطأ في إرسال الملف:", err);
+        res.status(500).send("حدث خطأ أثناء التحويل");
+      } else {
+        // حذف الملف بعد 5 دقائق لتخفيف الضغط
+        setTimeout(() => {
+          fs.unlink(filePath, (err) => {
+            if (err) console.log("حدث خطأ أثناء حذف الملف:", err);
+          });
+        }, 300000); // 5 دقائق
+      }
+    });
+  });
+});
+
+// بدء تشغيل الخادم
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
