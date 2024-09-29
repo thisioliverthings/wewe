@@ -1,11 +1,11 @@
 document.getElementById('convert-btn').addEventListener('click', async () => {
     const amount = document.getElementById('amount').value;
-    const fromCurrency = document.getElementById('from-currency').value.toUpperCase();
-    const toCurrency = document.getElementById('to-currency').value.toUpperCase();
+    const fromCurrency = document.getElementById('from-currency').value;
+    const toCurrency = document.getElementById('to-currency').value;
     const resultDiv = document.getElementById('result');
 
-    if (!amount || !fromCurrency || !toCurrency) {
-        resultDiv.innerHTML = 'Please fill all fields.';
+    if (!amount) {
+        resultDiv.innerHTML = 'Please enter an amount.';
         return;
     }
 
