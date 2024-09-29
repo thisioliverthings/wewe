@@ -1,3 +1,6 @@
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+
 function changeLanguage() {
     const lang = document.getElementById("language-select").value;
 
@@ -36,23 +39,44 @@ function adjustContainerSize() {
 }
 
 function convertToPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
+    // إنشاء مستند PDF جديد باستخدام pdfkit
+    const doc = new PDFDocument();
+    const fileName = 'converted-file.pdf';
+
+    // إنشاء تدفق لكتابة PDF إلى الملف
+    const writeStream = fs.createWriteStream(fileName);
+    doc.pipe(writeStream);
+
     // الحصول على النص المدخل
     const inputText = document.getElementById('textInput').value;
 
     // إضافة النص إلى ملف PDF
-    doc.text(inputText, 10, 10);
-    
-    // إعداد اسم الملف
-    const fileName = 'converted-file.pdf';
+    doc.fontSize(12).text(inputText, {
+        align: 'left',
+        indent: 20,
+        paragraphGap: 10
+    });
 
-    // حفظ الملف وتوفير رابط لتحميله
-    doc.save(fileName);
+    // إنهاء كتابة الـ PDF
+    doc.end();
+
+    writeStream.on('finish', function() {
+        console.log('تم إنشاء ملف PDF بنجاح.');
+        // بعد إنشاء الملف، يمكن إنشاء رابط لتحميله
+        const downloadLink = document.createElement('a');
+        downloadLink.href = fileName;
+        downloadLink.download = fileName;
+        downloadLink.click();
+    });
 
     // حذف الملف بعد 5 دقائق (300000 مللي ثانية)
     setTimeout(() => {
-        console.log('تم حذف الملف (افتراضيًا، يتم ذلك في الذاكرة فقط).');
+        fs.unlink(fileName, (err) => {
+            if (err) {
+                console.error("حدث خطأ أثناء حذف الملف:", err);
+            } else {
+                console.log("تم حذف ملف PDF بنجاح.");
+            }
+        });
     }, 300000); // 5 دقائق
 }
